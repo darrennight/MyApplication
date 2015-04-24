@@ -1,0 +1,71 @@
+//声明是android程序
+apply plugin: 'com.android.application'
+
+android {
+//    编译sdk版本
+    compileSdkVersion 19
+//    BUILD TOOL 版本
+    buildToolsVersion "19.1.0"
+
+    defaultConfig {
+//        程序包名
+        applicationId "com.example.zenghao.myapplication"
+        minSdkVersion 14
+        targetSdkVersion 15
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        debug {
+            // debug模式
+        }
+
+        release {
+//            是否进行混淆
+            minifyEnabled false
+//            混淆文件位置
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release // 签名配置
+
+        }
+    }
+
+
+//    signingConfigs {
+//        release {
+//            // 下面各值的意思将在后续进行讲解
+//            storeFile file('release.keystore')
+//            storePassword "123456"
+//            keyAlias "androiddebugkey"
+//            keyPassword "123456"
+//        }
+//        debug {
+//            storeFile file('release.keystore')
+//            storePassword "123456"
+//            keyAlias "androiddebugkey"
+//            keyPassword "123456"
+//        }
+//    }
+
+    // 移除lint检查的error
+    lintOptions {
+        abortOnError false
+    }
+
+    sourceSets {
+                main {
+                       jniLibs.srcDirs = ['libs']
+                  }
+          }
+
+
+}
+
+dependencies {
+    // 编译libs目录下的所有jar包
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    // 编译extras目录下的ShimmerAndroid模块
+    //    compile project(':extras:ShimmerAndroid')
+    compile project(':Aviary-SDK')
+    compile files('/Users/zenghao/AndroidStudioProjects/MyApplication/libs/pinyin4j-2.5.0.jar')
+}
