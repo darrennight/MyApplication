@@ -29,7 +29,10 @@ android {
 
         }
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 
 //    signingConfigs {
 //        release {
@@ -66,6 +69,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     // 编译extras目录下的ShimmerAndroid模块
     //    compile project(':extras:ShimmerAndroid')
-    compile project(':Aviary-SDK')
+
     compile files('/Users/zenghao/AndroidStudioProjects/MyApplication/libs/pinyin4j-2.5.0.jar')
 }
